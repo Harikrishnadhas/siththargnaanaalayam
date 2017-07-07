@@ -4,30 +4,63 @@
     </div>
 
     <div id="sign-out" *ngIf="fbService.user != null">
-        <img [src]="fbService.user?.photoURL">
-        <div id="user-name">{{fbService.user?.displayName}}</div>
+        <!--<img [src]="fbService.user?.photoURL" style="height:100px">
+        <div id="user-name">{{fbService.user?.displayName}}</div>-->
         <button (click)="fbService.signOut()">Sign Out</button>
     </div>
 </header>
-<div id="people_list" [hidden]="fbService.user == null">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Mobile#</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let people of fbService.peoples">
-                <td>{{people.name}}</td>
-                <td>{{people.mobile_no}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div id="content" [hidden]="fbService.user == null">
+    <material-list>
+        <material-list-item *ngFor="let people of fbService.peoples">
+            {{people.name}}
+            <div *ngIf="people.mobile_no != null" class="material-list-item-secondary">
+                <glyph icon="call"></glyph>
+                +91 {{people.mobile_no}}
+            </div>
+        </material-list-item>
+    </material-list>
+
+    <modal [(visible)]="showAddPeople">
+        <material-dialog headered>
+            <div header>
+                <h3>Add new People</h3>
+            </div>
+
+            <material-input autoFocus
+                            required
+                            floatingLabel
+                            label="Name"
+                            [(ngModel)]="name">
+            </material-input>
+            <material-input type="number"
+                            required
+                            floatingLabel
+                            label="Mobile Number"
+                            [(ngModel)]="mobile_no"
+                            [rightAlign]="true"
+                            leadingText="+91">
+            </material-input>
+
+            <div footer>
+                <material-button class="white"
+                                 (trigger)="addPeople()">
+                    Save
+                </material-button>
+                <material-button class="white"
+                                 (trigger)="showAddPeople = false">
+                    Close
+                </material-button>
+            </div>
+
+        </material-dialog>
+    </modal>
 
     <div>
-        <input [(ngModel)]="name" type="text"/>
-        <input [(ngModel)]="mobile_no" type="number"/>
+
     </div>
-    <button (click)="addPeople()">Add People</button>
+    <material-fab mini raised
+                  (trigger)="showAddPeople = true"
+                  [disabled]="name?.isEmpty">
+        <glyph icon="add"></glyph>
+    </material-fab>
 </div>

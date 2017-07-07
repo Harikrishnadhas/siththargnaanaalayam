@@ -12,17 +12,23 @@ import 'services/firebase_services.dart' as fb;
   selector: 'my-app',
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: const [materialDirectives],
+  directives: const [CORE_DIRECTIVES, materialDirectives, COMMON_DIRECTIVES, materialNumberInputDirectives],
   providers: const [materialProviders, fb.FirebaseService],
 )
 class AppComponent {
   final fb.FirebaseService fbService;
   String name;
   num mobile_no;
+  bool showAddPeople;
 
   AppComponent(fb.FirebaseService this.fbService);
 
   void addPeople(){
     fbService.addPeople(name: name,mobile_no: mobile_no);
+
+    //Clear the input values after adding
+    name = "";
+    mobile_no = null;
+    showAddPeople = false;
   }
 }
