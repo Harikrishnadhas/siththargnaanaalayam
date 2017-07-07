@@ -43,7 +43,8 @@
 
             <div footer>
                 <material-button class="white"
-                                 (trigger)="addPeople()">
+                                 (trigger)="addPeople()"
+                                 [disabled]="name?.isEmpty">
                     Save
                 </material-button>
                 <material-button class="white"
@@ -59,8 +60,7 @@
 
     </div>
     <material-fab mini raised
-                  (trigger)="showAddPeople = true"
-                  [disabled]="name?.isEmpty">
+                  (trigger)="showAddPeople = true">
         <glyph icon="add"></glyph>
     </material-fab>
 </div>
