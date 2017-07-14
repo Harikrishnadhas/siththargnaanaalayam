@@ -4,6 +4,7 @@
 import 'package:angular2/angular2.dart';
 import 'package:angular_components/angular_components.dart';
 import 'services/firebase_services.dart' as fb;
+import 'models/people.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
 // Components info: https://webdev.dartlang.org/components
@@ -17,18 +18,34 @@ import 'services/firebase_services.dart' as fb;
 )
 class AppComponent {
   final fb.FirebaseService fbService;
-  String name;
-  num mobile_no;
+  People modalPeople = new People('');
+  People gettingUpdated;
+
   bool showAddPeople;
 
   AppComponent(fb.FirebaseService this.fbService);
 
-  void addPeople(){
-    fbService.addPeople(name: name,mobile_no: mobile_no);
+  void addOrUpdatePeople(){
+    if(modalPeople.key == null)
+      fbService.addPeople(modalPeople);
+    else
+      fbService.updatePeople(modalPeople);
 
+    cancelEditing();
+  }
+
+  void updatePeople(People people)
+  {
+    modalPeople = new People.fromMap(people.toMap());
+    modalPeople.key = people.key;
+    gettingUpdated = people;
+    showAddPeople = true;
+  }
+
+  void cancelEditing()
+  {
     //Clear the input values after adding
-    name = "";
-    mobile_no = null;
+    modalPeople = new People('');
     showAddPeople = false;
   }
 }

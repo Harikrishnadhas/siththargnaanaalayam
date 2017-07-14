@@ -1,3 +1,19 @@
 :host {
     /* This is equivalent of the 'body' selector of a page. */
 }
+
+.name
+{
+    text-color: blue;
+    width:250px;
+}
+
+.address
+{
+    width:300px;
+}
+
+.darkorange
+{
+    color:darkorange;
+}
