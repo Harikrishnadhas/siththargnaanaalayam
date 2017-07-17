@@ -1,0 +1,66 @@
+<material-fab mini raised
+              (trigger)="showAddPerson = true">
+    <glyph icon="person_add" class="darkorange"></glyph>
+</material-fab>
+<material-list>
+    <material-list-item *ngFor="let person of fbService.personList; let idx = index">
+
+        <div class="name">
+            {{idx + 1}}.{{person.name}}
+        </div>
+
+        <div class="address">
+            <div>{{person.address.city}}</div>
+            <div>{{person.address.district}}</div>
+            <div>{{person.address.state}}</div>
+        </div>
+        <div>
+            <glyph icon="call" size="medium"></glyph>
+            +91 {{person.address.mobile_no}}
+        </div>
+        <!--<div>
+            <glyph icon="man"></glyph>
+            {{person.father_name}}
+        </div>-->
+        <div class="material-list-item-secondary">
+            <material-button icon
+                             (trigger)="updatePerson(person)">
+                <glyph icon="edit"></glyph>
+            </material-button>
+            <!--<material-fab mini
+                          raised
+                          (trigger)="fbService.removePerson(person)">
+                <glyph icon="remove"></glyph>
+            </material-fab>-->
+        </div>
+    </material-list-item>
+</material-list>
+<modal [(visible)]="showAddPerson">
+    <material-dialog headered>
+        <div header>
+            <h3>
+                <div *ngIf="modalPerson.key != null">
+                    Updating {{gettingUpdated?.name}}
+                </div>
+                <div *ngIf="modalPerson.key == null">
+                    Add new Person
+                </div>
+            </h3>
+        </div>
+
+        <person-edit [modalPerson]="modalPerson"></person-edit>
+
+        <div footer>
+            <material-button class="white"
+                             (trigger)="addOrUpdatePerson()"
+                             [disabled]="modalPerson.name?.isEmpty">
+                Save
+            </material-button>
+            <material-button class="white"
+                             (trigger)="cancelEditing()">
+                Cancel
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>

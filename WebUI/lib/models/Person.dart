@@ -1,6 +1,6 @@
 import 'Address.dart';
 
-class People {
+class Person {
   static const int FEMALE = 0;
   static const int MALE = 1;
 
@@ -14,14 +14,14 @@ class People {
   int sex;
   Address address;
 
-  People(this.name, [this.DOB, this.age, this.father_name, this.mother_name,
+  Person(this.name, [this.DOB, this.age, this.father_name, this.mother_name,
                     this.occupation, this.sex, this.address])
   {
     if(this.address == null)
       this.address = new Address();
   }
 
-  People.fromMap(Map map) :
+  Person.fromMap(Map map) :
     this(map['name'], map['DOB'], map['age'], map['father_name'], map['mother_name'],
           map['occupation'], map['sex'], new Address.fromMap(map['address'] != null ? map['address'] : {}));
 

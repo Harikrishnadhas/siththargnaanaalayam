@@ -1,0 +1,131 @@
+<div>
+    <material-input autoFocus
+                    required
+                    floatingLabel
+                    label="Name"
+                    [(ngModel)]="modalPerson.name">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Father Name"
+                    [(ngModel)]="modalPerson.father_name">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Mother Name"
+                    [(ngModel)]="modalPerson.mother_name">
+    </material-input>
+
+    <material-radio-group [(selected)]="modalPerson.sex">
+        <material-radio [value]="1">
+            Male
+        </material-radio>
+        <material-radio [value]="0">
+            Female
+        </material-radio>
+    </material-radio-group>
+</div>
+<div>
+    <material-input floatingLabel
+                    label="Date of Birth"
+                    [(ngModel)]="modalPerson.DOB">
+    </material-input>
+
+    <!--<input type="date" placeholder="Date of Birth" [(ngModel)]="modalPerson.DOB" />-->
+    <material-input type="number"
+                    floatingLabel
+                    label="Age"
+                    [(ngModel)]="modalPerson.age">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Occupation"
+                    [(ngModel)]="modalPerson.occupation">
+    </material-input>
+</div>
+<hr/>
+<div>
+    <material-input floatingLabel
+                    label="Door #"
+                    [(ngModel)]="modalPerson.address.door_no">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Building Name"
+                    [(ngModel)]="modalPerson.address.building_name">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Street Name"
+                    [(ngModel)]="modalPerson.address.street_name">
+    </material-input>
+</div>
+<div>
+    <material-input floatingLabel
+                    label="City"
+                    [(ngModel)]="modalPerson.address.city">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Village"
+                    [(ngModel)]="modalPerson.address.village">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Town"
+                    [(ngModel)]="modalPerson.address.town">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Post Office"
+                    [(ngModel)]="modalPerson.address.post_office">
+    </material-input>
+</div>
+<div>
+    <material-input floatingLabel
+                    label="District"
+                    [(ngModel)]="modalPerson.address.district">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="State"
+                    [(ngModel)]="modalPerson.address.state">
+    </material-input>
+
+    <material-input floatingLabel
+                    label="Country"
+                    [(ngModel)]="modalPerson.address.country">
+    </material-input>
+
+
+    <material-input type="number"
+                    required
+                    floatingLabel
+                    label="Postal Code"
+                    [(ngModel)]="modalPerson.address.postal_code"
+                    [rightAlign]="true">
+    </material-input>
+</div>
+<div>
+    <material-input type="email"
+                    required
+                    floatingLabel
+                    label="Email"
+                    [(ngModel)]="modalPerson.address.email">
+    </material-input>
+
+    <material-input type="number"
+                    required
+                    floatingLabel
+                    label="Mobile Number"
+                    [(ngModel)]="modalPerson.address.mobile_no"
+                    leadingText="+91">
+    </material-input>
+
+    <material-input type="number"
+                    floatingLabel
+                    label="Phone Number"
+                    [(ngModel)]="modalPerson.address.phone_no"
+                    leadingText="+91">
+    </material-input>
+</div>

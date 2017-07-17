@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:firebase/firebase.dart' as fb;
 
-import '../models/people.dart';
+import '../models/Person.dart';
 
 @Injectable()
 class FirebaseService {
@@ -11,9 +11,9 @@ class FirebaseService {
   fb.GoogleAuthProvider _fbGoogleAuthProvider;
   fb.Database _fbDatabase;
   //fb.Storage _fbStorage;
-  fb.DatabaseReference _fbRefPeoples;
+  fb.DatabaseReference _fbRefPerson;
   fb.User user;
-  List<People> peoples;
+  List<Person> personList;
 
   FirebaseService() {
     fb.initializeApp(
@@ -28,7 +28,7 @@ class FirebaseService {
     _fbAuth.onAuthStateChanged.listen(_authChanged);
 
     _fbDatabase = fb.database();
-    _fbRefPeoples = _fbDatabase.ref("peoples");
+    _fbRefPerson = _fbDatabase.ref("person");
   }
 
   void _authChanged(fb.AuthEvent event)
@@ -36,25 +36,25 @@ class FirebaseService {
     user = event.user;
 
     if(user != null){
-      peoples = [];
-      _fbRefPeoples.onChildAdded.listen(_newPeople);
-      _fbRefPeoples.onChildChanged.listen(_updatePeople);
-      _fbRefPeoples.onChildRemoved.listen(_peopleRemoved);
+      personList = [];
+      _fbRefPerson.onChildAdded.listen(_personAdded);
+      _fbRefPerson.onChildChanged.listen(_personUpdated);
+      _fbRefPerson.onChildRemoved.listen(_personRemoved);
     }
   }
 
-  void _newPeople(fb.QueryEvent event){
-    People ppl = new People.fromMap(event.snapshot.val());
-    ppl.key = event.snapshot.key;
-    peoples.add(ppl);
+  void _personAdded(fb.QueryEvent event){
+    Person person = new Person.fromMap(event.snapshot.val());
+    person.key = event.snapshot.key;
+    personList.add(person);
   }
 
-  void _updatePeople(fb.QueryEvent event) =>
-    peoples.firstWhere((people) => people.key == event.snapshot.key)?.assignMap(event.snapshot.val());
+  void _personUpdated(fb.QueryEvent event) =>
+    personList.firstWhere((person) => person.key == event.snapshot.key)?.assignMap(event.snapshot.val());
   
-  void _peopleRemoved(fb.QueryEvent event){
-    People ppl = new People.fromMap(event.snapshot.val());
-    peoples.remove(ppl);
+  void _personRemoved(fb.QueryEvent event){
+    Person person = new Person.fromMap(event.snapshot.val());
+    personList.remove(person);
   }
 
   Future signIn() async
@@ -73,28 +73,28 @@ class FirebaseService {
     _fbAuth.signOut();
   }
 
-  Future addPeople(People ppl) async{
+  Future addPerson(Person person) async{
     try{
-      await _fbRefPeoples.push(ppl.toMap());
+      await _fbRefPerson.push(person.toMap());
     }
     catch(error){
       print(error);
     }
   }
 
-  Future removePeople(People ppl) async{
+  Future removePerson(Person person) async{
     try{
-      await _fbRefPeoples.child(ppl.key).remove();
-      peoples.remove(ppl);
+      await _fbRefPerson.child(person.key).remove();
+      personList.remove(person);
     }
     catch(error){
       print(error);
     }
   }
 
-  Future updatePeople(People ppl) async{
+  Future updatePerson(Person person) async{
     try{
-      await _fbRefPeoples.child(ppl.key).update(ppl.toMap());
+      await _fbRefPerson.child(person.key).update(person.toMap());
     }
     catch(error){
       print(error);

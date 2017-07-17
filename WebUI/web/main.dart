@@ -3,7 +3,7 @@
 
 import 'package:angular2/platform/browser.dart';
 
-import 'package:WebUI/app_component.dart';
+import 'package:WebUI/views/app_component/app_component.dart';
 
 void main() {
   bootstrap(AppComponent);
