@@ -20,8 +20,7 @@ class FirebaseService {
         apiKey: "AIzaSyC1xQEPO5zwcHREA-Lf9i02bG7a3cXCYFQ",
         authDomain: "siththar-gnaanaalayam.firebaseapp.com",
         databaseURL: "https://siththar-gnaanaalayam.firebaseio.com",
-        storageBucket: "siththar-gnaanaalayam.appspot.com"
-    );
+        storageBucket: "siththar-gnaanaalayam.appspot.com");
 
     _fbGoogleAuthProvider = new fb.GoogleAuthProvider();
     _fbAuth = fb.auth();
@@ -31,11 +30,10 @@ class FirebaseService {
     _fbRefPerson = _fbDatabase.ref("person");
   }
 
-  void _authChanged(fb.AuthEvent event)
-  {
+  void _authChanged(fb.AuthEvent event) {
     user = event.user;
 
-    if(user != null){
+    if (user != null) {
       personList = [];
       _fbRefPerson.onChildAdded.listen(_personAdded);
       _fbRefPerson.onChildChanged.listen(_personUpdated);
@@ -43,28 +41,25 @@ class FirebaseService {
     }
   }
 
-  void _personAdded(fb.QueryEvent event){
+  void _personAdded(fb.QueryEvent event) {
     Person person = new Person.fromMap(event.snapshot.val());
     person.key = event.snapshot.key;
     personList.add(person);
   }
 
-  void _personUpdated(fb.QueryEvent event) =>
-    personList.firstWhere((person) => person.key == event.snapshot.key)?.assignMap(event.snapshot.val());
-  
-  void _personRemoved(fb.QueryEvent event){
+  void _personUpdated(fb.QueryEvent event) => personList
+      .firstWhere((person) => person.key == event.snapshot.key)
+      ?.assignMap(event.snapshot.val());
+
+  void _personRemoved(fb.QueryEvent event) {
     Person person = new Person.fromMap(event.snapshot.val());
     personList.remove(person);
   }
 
-  Future signIn() async
-  {
-    try
-    {
+  Future signIn() async {
+    try {
       await _fbAuth.signInWithPopup(_fbGoogleAuthProvider);
-    }
-    catch(error)
-    {
+    } catch (error) {
       print("$runtimeType::login() -- $error");
     }
   }
@@ -73,30 +68,27 @@ class FirebaseService {
     _fbAuth.signOut();
   }
 
-  Future addPerson(Person person) async{
-    try{
+  Future addPerson(Person person) async {
+    try {
       await _fbRefPerson.push(person.toMap());
-    }
-    catch(error){
+    } catch (error) {
       print(error);
     }
   }
 
-  Future removePerson(Person person) async{
-    try{
+  Future removePerson(Person person) async {
+    try {
       await _fbRefPerson.child(person.key).remove();
       personList.remove(person);
-    }
-    catch(error){
+    } catch (error) {
       print(error);
     }
   }
 
-  Future updatePerson(Person person) async{
-    try{
+  Future updatePerson(Person person) async {
+    try {
       await _fbRefPerson.child(person.key).update(person.toMap());
-    }
-    catch(error){
+    } catch (error) {
       print(error);
     }
   }

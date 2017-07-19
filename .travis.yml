@@ -12,3 +12,8 @@ dart:
 #  provider: firebase
 #  token:
 #    secure: "YOUR ENCRYPTED token"
+dart-task:
+  - test
+  - dartanalyzer: --fatal-warnings lib
+  - dartfmt
+

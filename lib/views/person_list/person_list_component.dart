@@ -8,10 +8,14 @@ import 'package:WebUI/views/person_edit/person_edit_component.dart';
   selector: 'person-list',
   styleUrls: const ['person_list_component.css'],
   templateUrl: 'person_list_component.html',
-  directives: const [CORE_DIRECTIVES, materialDirectives, COMMON_DIRECTIVES, PersonEdit],
+  directives: const [
+    CORE_DIRECTIVES,
+    materialDirectives,
+    COMMON_DIRECTIVES,
+    PersonEdit
+  ],
 )
-
-class PersonList{
+class PersonList {
   final fb.FirebaseService fbService;
   Person modalPerson = new Person('');
   Person gettingUpdated;
@@ -20,8 +24,8 @@ class PersonList{
 
   PersonList(fb.FirebaseService this.fbService);
 
-  void addOrUpdatePerson(){
-    if(modalPerson.key == null)
+  void addOrUpdatePerson() {
+    if (modalPerson.key == null)
       fbService.addPerson(modalPerson);
     else
       fbService.updatePerson(modalPerson);
@@ -29,16 +33,14 @@ class PersonList{
     cancelEditing();
   }
 
-  void updatePerson(Person person)
-  {
+  void updatePerson(Person person) {
     modalPerson = new Person.fromMap(person.toMap());
     modalPerson.key = person.key;
     gettingUpdated = person;
     showAddPerson = true;
   }
 
-  void cancelEditing()
-  {
+  void cancelEditing() {
     //Clear the input values after adding
     modalPerson = new Person('');
     showAddPerson = false;
