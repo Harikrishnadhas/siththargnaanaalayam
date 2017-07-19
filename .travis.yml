@@ -8,3 +8,7 @@ dart:
 - "1.15.0"
 # Install a specific dev release, using a partial download URL - 1.16.0-dev.3.0
 - "dev/release/1.16.0-dev.3.0"
+deploy:
+  provider: firebase
+  token:
+    secure: "YOUR ENCRYPTED token"

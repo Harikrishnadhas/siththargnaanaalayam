@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WebUI/WebUI.iml" filepath="$PROJECT_DIR$/WebUI/WebUI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/siththargnaanaalayam.iml" filepath="$PROJECT_DIR$/.idea/siththargnaanaalayam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Siththar Gnaanaalayam Web UI.iml" filepath="$PROJECT_DIR$/.idea/Siththar Gnaanaalayam Web UI.iml" />
     </modules>
   </component>
 </project>
