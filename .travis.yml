@@ -11,6 +11,7 @@ dart:
 deploy:
   provider: firebase
   token: "1/HhZIQ-gM_6hEc5dmGgS31kX-D6axcGQHTAZN2pbujrk"
+  skip_cleanup: true
 #dart-task:
 #  - test
 #  - dartanalyzer: --fatal-warnings lib
