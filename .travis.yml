@@ -11,7 +11,7 @@ dart:
 deploy:
   provider: firebase
   token: "1/HhZIQ-gM_6hEc5dmGgS31kX-D6axcGQHTAZN2pbujrk"
-dart-task:
-  - test
-  - dartanalyzer: --fatal-warnings lib
-  - dartfmt
+#dart-task:
+#  - test
+#  - dartanalyzer: --fatal-warnings lib
+#  - dartfmt
