@@ -8,12 +8,11 @@ dart:
 #- "1.15.0"
 # Install a specific dev release, using a partial download URL - 1.16.0-dev.3.0
 #- "dev/release/1.16.0-dev.3.0"
-#deploy:
-#  provider: firebase
-#  token:
-#    secure: "YOUR ENCRYPTED token"
+deploy:
+  provider: firebase
+  token:
+    secure: "SuQXGDSkvkaMtpeVlt9nQtwMw+TZ0OmcRbZfpoqOCnnxoPvKcuev69/8OHn0XxADiRXJOM9mAdshY1+4vnOJyGhfbf8wGI2LRANrbD0zqNj9rVyIwuXNi7uRkU2Qb9TdlUSOXGO8TtlSOAGG+sLD2VFauugfIaMwxm48+8F+Kp3sG2Ip+m3QkCPTfyAHD+2Xw8H8IKcxnAuNgZwF9Li1pF1GbFFdABj6s7tf1TaCTHRYIKyC/Bbs4CBhfMiqqAw9jQYY9xWz1Dynq5n4H9xIoXm3DQb1lbjY5jNPrf/30Gqgbo3/abPAhKPRQhvsIMwhkSiFPjG1D4k8Y3732Iv3U5X26jkztMh6wJllr641e1cUQXOK96LFkWti34yUGBHf8r3WNUg6pSMnO/mRKg84ZKh244ZlaDS1V82SLxCyScxP4vqSmLK/lt82dTLHiOjSCSREb7rkqmqVMuQwN6dCdIUl7JWgflhWPPmnzWBd9JKfpZ9uwE54rSZH3fGvolQKYRryHugvhqQ++K82fdmY3eQ9gNfAQQbNvhkHzBzoLJ9Na/xwItl3R+/KPXpIWH7kxw2EgCUttjdkHrEWjWaIe78QPNBisYkSOsx3R7/1zjvkxIYEP7E9iHiJ++KM7OvqDkOZKiLxMIa5J/77EsbIj2TOwWlfh1paIWWusovwrdg="
 dart-task:
   - test
   - dartanalyzer: --fatal-warnings lib
   - dartfmt
-
