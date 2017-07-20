@@ -1,4 +1,4 @@
-Auto Deployed to Firebase using Travis CI
+
 <header>
     <div id="sign-in" *ngIf="fbService.user == null">
         <button class="btn btn-outline-secondary btn-sm" (click)="fbService.signIn()">Google Sign In</button>
@@ -10,5 +10,5 @@ Auto Deployed to Firebase using Travis CI
         <button (click)="fbService.signOut()">Sign Out</button>
     </div>
 </header>
-
+Auto Deployed to Firebase using Travis CI
 <person-list [hidden]="fbService.user == null"></person-list>

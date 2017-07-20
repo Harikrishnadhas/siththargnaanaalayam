@@ -8,6 +8,7 @@ dart:
 #- "1.15.0"
 # Install a specific dev release, using a partial download URL - 1.16.0-dev.3.0
 #- "dev/release/1.16.0-dev.3.0"
+script: pub build --mode=release --output=build
 deploy:
   provider: firebase
   token: "1/HhZIQ-gM_6hEc5dmGgS31kX-D6axcGQHTAZN2pbujrk"
