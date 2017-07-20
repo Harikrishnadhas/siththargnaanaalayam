@@ -10,8 +10,7 @@ dart:
 #- "dev/release/1.16.0-dev.3.0"
 deploy:
   provider: firebase
-  token:
-    secure: "l4uO/POKyOiHJxWIMKulBsKb666wPmFGTts+5kbR65wYSf9nYJeiLq9MPT3WsCGiOLLz2e0AZh3kk1yFT410mcb+AKaTf8K1kiwCbqJhD34abd0+N0kuokdb+AMhW59zDoEEKLjXoKtT0zJlSFhixhqlWQ4DxwvyqZHgIpLwovGjoP8xuQLpDKiuhfu2s133ugK+RO0CslUCNENrhHufho2jedUdesWuoK+BkV726N85mIVOaynKYuuXy2EYY06nzw1zW3yCO/5++FVSvVZ8mAAAJc3fieiP7B+iTWaHZWNY2GBLL4gtguw9OoL3Do7XX9vvCG9igPhdkTd2xWxpRDU5+W3hnpyGwA6eYQ3E7zxkhboBRU8O6EyrFOYX299K8ezrlkpht4M1XdLppbaCv3/lSSEcMgnPuSpnoIY0ahACvr1k9YkrOqIPFReQ3mQBrg9oYPj8fzsbqInCV/Wlxjy35oGiCKPqRVlkX3z1ZmeDP/yKnF4xmRAaO638/2DnmcIyZtqIYNydKsN32kVfCFYaNlt1yz6VF1fPgOoqd7MK/OwVe6/gyFley7uJLUjg4FpH/EIjBw32ujo2G7MKvNCNjiVoWo2wis8JiU5bHRpxG66CJQqFONuRFFMFj2QBCdE2zszAg3vh0RjTBpn/Ds5a1zGuhY4rBuBrDlpSmjM="
+  token: "1/HhZIQ-gM_6hEc5dmGgS31kX-D6axcGQHTAZN2pbujrk"
 dart-task:
   - test
   - dartanalyzer: --fatal-warnings lib
