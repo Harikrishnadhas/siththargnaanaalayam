@@ -1,6 +1,5 @@
 @Tags(const ['aot'])
 @TestOn('browser')
-import 'dart:html';
 
 import 'package:angular2/angular2.dart';
 import 'package:angular_test/angular_test.dart';

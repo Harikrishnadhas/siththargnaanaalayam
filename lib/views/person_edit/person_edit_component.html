@@ -129,3 +129,11 @@
                     leadingText="+91">
     </material-input>
 </div>
+<div>
+    <ol>
+        <li *ngFor="let meditation of modalPerson.meditations_learned">
+            <siththar-meditation [meditation]="meditation"></siththar-meditation>
+            <button (trigger)="deleteMeditation(meditation)">Remove</button>
+        </li>
+    </ol>
+</div>

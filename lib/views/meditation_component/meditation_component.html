@@ -1,0 +1,9 @@
+<div *ngIf="edit">
+    <input [(ngModel)]="rec.name" /> on
+    <input type="date" [(ngModel)]="rec.learned_on" />
+</div>
+
+<div *ngIf="!edit">
+    {{rec.name}} on {{rec.learned_on}}
+    <button (trigger)="edit=true">Edit</button>
+</div>
